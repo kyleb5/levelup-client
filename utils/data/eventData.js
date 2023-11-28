@@ -8,4 +8,5 @@ const getEvents = () =>
       .catch(reject);
   });
 
+// eslint-disable-next-line import/prefer-default-export
 export { getEvents };

@@ -6,7 +6,6 @@ const EventCard = ({
   description, //
   date,
   time,
-  skillLevel,
 }) => (
   <Card className="text-center">
     <Card.Header>{description}</Card.Header>
@@ -15,7 +14,6 @@ const EventCard = ({
         When: {date} At: {time}
       </Card.Title>
     </Card.Body>
-    <Card.Footer className="text-muted">Skill Level: {skillLevel}</Card.Footer>
   </Card>
 );
 
