@@ -21,7 +21,6 @@ EventCard.propTypes = {
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
-  skillLevel: PropTypes.number.isRequired,
 };
 
 export default EventCard;
