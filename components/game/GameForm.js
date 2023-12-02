@@ -58,10 +58,7 @@ const GameForm = ({ user }) => {
         // Handle error, e.g., show an error message to the user
         console.error('Error creating game:', error);
       });
-    console.warn(game);
   };
-
-  console.warn(gameTypes);
 
   return (
     <>

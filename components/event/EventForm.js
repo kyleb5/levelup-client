@@ -59,9 +59,7 @@ const EventForm = ({ user }) => {
         // Handle error, e.g., show an error message to the user
         console.error('Error creating event:', error);
       });
-    console.warn(event);
   };
-  console.warn(game);
 
   return (
     <>
