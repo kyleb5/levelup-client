@@ -10,10 +10,10 @@ function Home() {
 
   useEffect(() => {
     getEvents().then((data) => setEvents(data));
-  }, [events]);
+  }, []);
 
   const updateCards = () => {
-    getEvents();
+    getEvents().then((data) => setEvents(data));
   };
   return (
     <article className="events">

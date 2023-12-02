@@ -10,7 +10,7 @@ function Home() {
 
   useEffect(() => {
     getGames().then((data) => setGames(data));
-  }, []);
+  }, [games]);
 
   return (
     <article className="games">
