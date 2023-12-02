@@ -25,7 +25,7 @@ const EventForm = ({ user }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Fetch game types and update state
+    // Fetch event types and update state
     getGames().then((types) => setGames(types));
   }, []);
 
@@ -52,7 +52,7 @@ const EventForm = ({ user }) => {
     // Send POST request to your API
     createEvents(event)
       .then(() => {
-        // After successful creation, navigate to the games page
+        // After successful creation, navigate to the events page
         router.push('/events');
       })
       .catch((error) => {
