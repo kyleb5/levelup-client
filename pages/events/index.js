@@ -24,7 +24,7 @@ function Home() {
       >
         Register New Event
       </Button>
-      <h1>Games</h1>
+      <h1>Events</h1>
       {events.map((eventObj) => (
         <section key={`event--${eventObj.id}`} className="event">
           <EventCard description={eventObj.description} date={eventObj.date} time={eventObj.time} id={eventObj.id} onUpdate={updateCards} />

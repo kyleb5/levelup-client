@@ -39,7 +39,6 @@ const deleteGame = (id) =>
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(reject);
   });
