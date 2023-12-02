@@ -10,8 +10,11 @@ function Home() {
 
   useEffect(() => {
     getEvents().then((data) => setEvents(data));
-  }, []);
+  }, [events]);
 
+  const updateCards = () => {
+    getEvents();
+  };
   return (
     <article className="events">
       <Button
@@ -22,9 +25,9 @@ function Home() {
         Register New Event
       </Button>
       <h1>Games</h1>
-      {events.map((event) => (
-        <section key={`event--${event.id}`} className="event">
-          <EventCard description={event.description} date={event.date} time={event.time} />
+      {events.map((eventObj) => (
+        <section key={`event--${eventObj.id}`} className="event">
+          <EventCard description={eventObj.description} date={eventObj.date} time={eventObj.time} id={eventObj.id} onUpdate={updateCards} />
         </section>
       ))}
     </article>
