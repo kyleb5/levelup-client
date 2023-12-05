@@ -3,7 +3,25 @@ import { clientCredentials } from '../client';
 
 const getEvents = () =>
   new Promise((resolve, reject) => {
-    fetch(`${clientCredentials.databaseURL}/events`)
+    fetch(`${clientCredentials.databaseURL}/events`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then(resolve)
+      .catch(reject);
+  });
+
+const getSingleEvent = (id) =>
+  new Promise((resolve, reject) => {
+    fetch(`${clientCredentials.databaseURL}/events/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => response.json())
       .then(resolve)
       .catch(reject);
@@ -35,5 +53,18 @@ const deleteEvent = (id) =>
       .catch(reject);
   });
 
-// eslint-disable-next-line import/prefer-default-export
-export { getEvents, createEvents, deleteEvent };
+const updateEvent = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${clientCredentials.databaseURL}/events/${payload.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
+
+// eslint-disable-next-line import/prefer-default-export, object-curly-newline
+export { getEvents, createEvents, deleteEvent, updateEvent, getSingleEvent };
