@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import Link from 'next/link';
 import { deleteGame } from '../../utils/data/gameData';
 
 // eslint-disable-next-line object-curly-newline
@@ -19,6 +20,11 @@ const GameCard = ({ id, title, maker, onUpdate }) => {
       <Card.Footer>
         <Button variant="danger" onClick={handleDelete}>
           Delete
+        </Button>
+        <Button variant="primary">
+          <Link href={`/games/edit/${id}`} passHref>
+            Update
+          </Link>
         </Button>
       </Card.Footer>
     </Card>
