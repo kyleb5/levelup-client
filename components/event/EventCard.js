@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import Link from 'next/link';
 import { deleteEvent } from '../../utils/data/eventData';
 
 // eslint-disable-next-line object-curly-newline
@@ -22,6 +23,11 @@ const EventCard = ({ id, description, date, time, onUpdate }) => {
       <Card.Footer>
         <Button variant="danger" onClick={handleDelete}>
           Delete
+        </Button>
+        <Button variant="primary">
+          <Link href={`/events/edit/${id}`} passHref>
+            Update
+          </Link>
         </Button>
       </Card.Footer>
     </Card>
