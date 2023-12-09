@@ -1,12 +1,13 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { clientCredentials } from '../client';
 
-const getEvents = () =>
+const getEvents = (uid) =>
   new Promise((resolve, reject) => {
     fetch(`${clientCredentials.databaseURL}/events`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: uid,
       },
     })
       .then((response) => response.json())
