@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
+import { useAuth } from '../../utils/context/authContext';
 import EventCard from '../../components/event/EventCard';
 import { getEvents } from '../../utils/data/eventData';
 
 function Home() {
   const [events, setEvents] = useState([]);
   const router = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
-    getEvents().then((data) => setEvents(data));
-  }, []);
+    getEvents(user.uid).then((data) => setEvents(data));
+  }, [user.uid]);
 
   const updateCards = () => {
     getEvents().then((data) => setEvents(data));
