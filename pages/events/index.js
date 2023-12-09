@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     getEvents(user.uid).then((data) => setEvents(data));
-  }, []);
+  }, [user.uid]);
 
   const updateCards = () => {
     getEvents().then((data) => setEvents(data));
