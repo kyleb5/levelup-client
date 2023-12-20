@@ -1,14 +1,30 @@
+/* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { deleteEvent } from '../../utils/data/eventData';
+import { deleteEvent, joinEvent, leaveEvent } from '../../utils/data/eventData';
 
-// eslint-disable-next-line object-curly-newline
-const EventCard = ({ id, description, date, time, onUpdate }) => {
+const EventCard = ({ id, description, date, time, joined, onUpdate }) => {
+  const [isJoined, setIsJoined] = useState(joined);
+
   const handleDelete = () => {
     if (window.confirm(`Delete ${description}?`)) {
       deleteEvent(id).then(() => onUpdate());
+    }
+  };
+
+  const handleJoinLeave = () => {
+    if (isJoined) {
+      leaveEvent(id).then(() => {
+        onUpdate();
+        setIsJoined(false);
+      });
+    } else {
+      joinEvent(id).then(() => {
+        onUpdate();
+        setIsJoined(true);
+      });
     }
   };
 
@@ -29,6 +45,9 @@ const EventCard = ({ id, description, date, time, onUpdate }) => {
             Update
           </Link>
         </Button>
+        <Button variant={isJoined ? 'danger' : 'success'} onClick={handleJoinLeave}>
+          {isJoined ? 'Leave' : 'Join'}
+        </Button>
       </Card.Footer>
     </Card>
   );
@@ -39,6 +58,7 @@ EventCard.propTypes = {
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
+  joined: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
 
